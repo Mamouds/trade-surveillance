@@ -1,0 +1,29 @@
+/** Sample queries for TradeAsset Trading business network
+*/
+
+query selectTradeAssets {
+  description: "Select all trade assets"
+  statement:
+      SELECT org.example.mynetwork.TradeAsset
+}
+
+query selectTradeAssetsByExchange {
+  description: "Select all trade assets based on their main exchange"
+  statement:
+      SELECT org.example.mynetwork.TradeAsset
+          WHERE (tradeSymbol==_$symbol)
+}
+
+query selectTradeAssetsByOwner {
+  description: "Select all trade assets based on their owner"
+  statement:
+      SELECT org.example.mynetwork.TradeAsset
+          WHERE (owner == _$owner)
+}
+
+query selectTradeAssetsWithHighQuantity {
+  description: "Select trade assets based on quantity"
+  statement:
+      SELECT org.example.mynetwork.TradeAsset
+          WHERE (quantity > 100)
+}

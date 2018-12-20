@@ -1,0 +1,25 @@
+sudo -i 
+
+docker ps
+docker network prune
+docker container prune
+
+./startFabric.sh
+
+sudo composer network install --card PeerAdmin@hlfv1 --archiveFile trade-surveillance@0.0.2.bna 
+
+composer network start --networkName trade-surveillance --networkVersion 0.0.2 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+
+composer card import --file networkadmin.card
+
+composer network ping --card admin@trade-surveillance
+
+composer-rest-server -c admin@trade-surveillance -n never -u true -d Y -w true
+
+npm install 
+yo hyperledger-composer:angular
+
+# start directly if already created
+cd tutorial-network
+npm start
+
