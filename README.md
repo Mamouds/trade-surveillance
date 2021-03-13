@@ -1,3 +1,3 @@
 # trade-surveillance
 
-A prototype for trade sureveillance on blockchain
+This is a prototype for trade sureveillance on blockchain
